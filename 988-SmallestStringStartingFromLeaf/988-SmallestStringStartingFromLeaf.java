@@ -1,18 +1,33 @@
-// Last updated: 8/11/2026, 11:39:43 AM
+// Last updated: 8/11/2026, 12:28:42 PM
 1class Solution {
-2
-3    public String tree2str(TreeNode root) {
-4
-5        if (root == null)
-6            return "";
-7
-8        if (root.left == null && root.right == null)
-9            return root.val + "";
-10
-11        if (root.right == null)
-12            return root.val + "(" + tree2str(root.left) + ")";
-13
-14        return root.val + "(" + tree2str(root.left) + ")" 
-15                     + "(" + tree2str(root.right) + ")";
-16    }
-17}
+2    public int calculate(String s) {
+3        int res = 0, n = 0;
+4        Stack<Integer> st = new Stack<>();
+5        s += '+';
+6        char op = '+';
+7        for(int i = 0; i < s.length(); i++){
+8            char c = s.charAt(i);
+9
+10            if(c == ' ') continue;
+11
+12            if(Character.isDigit(c)){
+13                n = n * 10 + (c - '0');
+14                continue;
+15            }
+16
+17            if(op == '+') st.push(n);
+18            else if(op == '-') st.push(-n);
+19            else if(op == '*') st.push(st.pop() * n);
+20            else if(op == '/') st.push(st.pop() / n);
+21
+22            op = c;
+23            n = 0;
+24        }
+25
+26        for(int i : st){
+27            res += i;
+28        }
+29
+30        return res;
+31    }
+32}
