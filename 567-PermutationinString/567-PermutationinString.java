@@ -1,30 +1,20 @@
-// Last updated: 8/12/2026, 11:46:21 AM
+// Last updated: 8/12/2026, 11:54:04 AM
 1class Solution {
-2    public static String sorted(String s) {
-3        char[] arr = s.toCharArray();
-4        Arrays.sort(arr);
-5        return new String(arr);
-6    }
-7
-8    public boolean checkInclusion(String s1, String s2) {
-9        int right = 0, left = 1;
-10        int k = s1.length();
-11        s1 = sorted(s1);
-12        if (s1.length() > s2.length()) {
-13            return false;
-14        }
-15
-16        if (s1.equals(sorted(s2.substring(0, k)))) {
-17            return true;
-18        }
-19
-20        for (int i = k; i < s2.length(); i++) {
-21            if (s1.equals(sorted(s2.substring(left, i + 1)))) {
-22                return true;
-23            } else {
-24                left++;
-25            }
-26        }
-27        return false;
-28    }
-29}
+2    public boolean isVowel(char c){
+3        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+4    }
+5    public int maxVowels(String s, int k) {
+6        int maxVowel=0;
+7        int left=0;
+8        int vowel=0;
+9        for(int right=0;right<s.length();right++){
+10            if(isVowel(s.charAt(right)))vowel++;
+11            if((right-left+1) == k){
+12                maxVowel=Math.max(maxVowel,vowel);
+13                if(isVowel(s.charAt(left)))vowel--;
+14                left++;
+15            }
+16        }
+17        return maxVowel;
+18    }
+19}
