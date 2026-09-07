@@ -1,29 +1,22 @@
-// Last updated: 9/7/2026, 12:21:51 PM
-1class Solution {
-2    public int maximumSum(int[] nums) {
-3     
-4        int[] maxForDigitSum = new int[82];
-5        int maxSum = -1;
-6
-7        for (int num : nums) {
-8            int sum = digitSum(num);
-9
-10            if (maxForDigitSum[sum] > 0) {
-11                maxSum = Math.max(maxSum, num + maxForDigitSum[sum]);
-12            }
-13
-14            maxForDigitSum[sum] = Math.max(maxForDigitSum[sum], num);
-15        }
+// Last updated: 9/7/2026, 12:27:45 PM
+1class LRUCache extends LinkedHashMap<Integer, Integer> {
+2    private final int maxCap;
+3
+4    public LRUCache(int capacity) {
+5        super(capacity, 0.75f, true); 
+6        maxCap = capacity;
+7    }
+8
+9    public int get(int key) {
+10        return super.getOrDefault(key, -1);
+11    }
+12
+13    public void put(int key, int value) {
+14        super.put(key, value);
+15    }
 16
-17        return maxSum;
-18    }
-19
-20    private int digitSum(int num) {
-21        int sum = 0;
-22        while (num > 0) {
-23            sum += num % 10;
-24            num /= 10;
-25        }
-26        return sum;
-27    }
-28}
+17    @Override
+18    protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+19        return size() > maxCap;
+20    }
+21}
