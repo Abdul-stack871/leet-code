@@ -1,34 +1,24 @@
-// Last updated: 9/10/2026, 11:46:40 AM
+// Last updated: 9/10/2026, 11:56:47 AM
 1class Solution {
-2    public int numberOfSubarrays(int[] nums, int k) {
-3        int st = 0 , ed = 0;
-4        int rs = 0 ;
-5        int od = 0 ;
-6
-7        while(ed < nums.length){
-8            if(nums[ed] % 2 == 1){
-9                od++ ;
-10            }
+2    public int maxScore(int[] nums, int k) {
+3        int n = nums.length;
+4        int lsm = 0 ; 
+5        int rsm = 0 ; 
+6        int mxsm = 0 ; 
+7        for(int i=0 ; i<k ; i++){
+8            lsm = lsm + nums[i];
+9        }
+10
 11
-12            if(od == k){
-13                int lftct = 1;
-14                while(st <= ed && nums[st++] % 2 == 0){
-15                    lftct++ ;
-16                }
-17
-18                od-- ;
-19                int rgtct = 1;
-20                while(ed + 1 < nums.length && nums[ed + 1] % 2 == 0){
-21                    rgtct++ ;
-22                    ed++ ;
-23                }
-24
-25                rs += lftct * rgtct ;
-26
-27            }
-28            ed++ ;
-29        }
-30
-31        return rs ;
-32    }
-33}
+12        mxsm = lsm ;
+13        int rd = n-1 ;
+14        for(int i=k-1 ; i>=0 ; i--){
+15            lsm = lsm - nums[i];
+16            rsm = rsm + nums[rd];
+17            mxsm = Math.max(mxsm,lsm+rsm);
+18            rd-- ;
+19        }
+20
+21        return mxsm ;
+22    }
+23}
