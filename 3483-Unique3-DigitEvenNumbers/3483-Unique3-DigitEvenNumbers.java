@@ -1,4 +1,4 @@
-// Last updated: 9/11/2026, 10:12:54 AM
+// Last updated: 9/11/2026, 10:25:01 AM
 1class Solution {
 2    public int totalNumbers(int[] digits) {
 3        int[] digitFreq = new int[10];
