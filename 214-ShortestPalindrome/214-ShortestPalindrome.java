@@ -1,4 +1,4 @@
-// Last updated: 9/18/2026, 2:33:34 PM
+// Last updated: 9/18/2026, 2:37:54 PM
 1class Solution {
 2    public String shortestPalindrome(String s) {
 3        String rev_s = new StringBuilder(s).reverse().toString();
