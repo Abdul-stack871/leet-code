@@ -1,4 +1,4 @@
-// Last updated: 9/30/2026, 11:51:54 AM
+// Last updated: 9/30/2026, 11:53:25 AM
 1class Solution {
 2    public int[] maxDepthAfterSplit(String seq) {
 3        int x = seq.length() ;
