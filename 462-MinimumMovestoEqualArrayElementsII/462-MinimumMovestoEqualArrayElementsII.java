@@ -1,4 +1,4 @@
-// Last updated: 11/2/2026, 8:50:52 AM
+// Last updated: 11/2/2026, 9:02:35 AM
 1class Solution {
 2    public int minMoves2(int[] nums) {
 3        Arrays.sort(nums);
