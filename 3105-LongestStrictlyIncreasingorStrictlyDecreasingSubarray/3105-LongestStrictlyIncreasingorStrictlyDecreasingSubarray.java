@@ -1,4 +1,4 @@
-// Last updated: 11/12/2026, 9:34:57 AM
+// Last updated: 11/12/2026, 10:01:11 AM
 1class Solution {
 2    public int longestMonotonicSubarray(int[] nums) {
 3        int n = nums.length;
